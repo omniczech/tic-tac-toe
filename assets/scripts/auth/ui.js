@@ -7,6 +7,7 @@ const signUpSuccess = () => {
   $('#message').text('Successfully signed up!')
   $('#message').addClass('success')
   $('#message').removeClass('failure')
+  $('#sign-up input[type="email"], #sign-up input[type="password"]').val('')
   setTimeout(() => { $('#message').fadeOut() }, 2000)
 }
 
@@ -25,6 +26,7 @@ const signInSuccess = (data) => {
   $('#message').removeClass('failure')
   store.user = data.user
   console.log(store.user)
+  $('#sign-in input[type="email"], #sign-in input[type="password"]').val('')
   setTimeout(() => { $('#message').fadeOut() }, 2000)
 }
 
