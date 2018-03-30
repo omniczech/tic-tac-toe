@@ -24,8 +24,8 @@ const addLetter = (e) => {
     (gameBoardArray[6] !== '' && gameBoardArray[6] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[2])
 
   ) {
-    $('.game-space').off('click')
-    console.log(`${gameBoardArray[0].toUpperCase()} Wins!`)
+    $('.game-space').off('click', addLetter)
+    console.log(`${currentLetter.toUpperCase()} Wins!`)
   } else if (turnOrder === 9) {
     console.log('It\'s a draw')
   }
@@ -37,10 +37,11 @@ const addLetter = (e) => {
 const newGame = () => {
   $('.game-space').html('')
   turnOrder = 1
-  gameBoardArray.forEach(space => {
-    space = ''
-    return 'false'
+  gameBoardArray.forEach(function (part, index, theArray) {
+    theArray[index] = ''
   })
+  console.log(gameBoardArray)
+  $('.game-space.open').on('click', addLetter)
 }
 
 const addHandlers = () => {
