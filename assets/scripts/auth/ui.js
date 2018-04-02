@@ -70,6 +70,7 @@ const signOutSuccess = () => {
   $('.overlay').fadeIn()
   $('.panel-sign-in-out').fadeIn()
   $('.new-game').fadeOut()
+  $('.announce').fadeOut()
 }
 
 const signOutFailure = () => {
