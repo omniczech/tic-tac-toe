@@ -7,10 +7,9 @@ const menuToggle = () => {
 }
 
 const signUpSuccess = () => {
-  $('#message').fadeIn()
-  $('#message').text('Successfully signed up!')
-  $('#message').addClass('success')
-  $('#message').removeClass('failure')
+  $('#success-message').html('')
+  $('#success-message').fadeIn()
+  $('#success-message').append('<p>Signed up successfully!<br>Please sign in now.</p>')
   $('#sign-up input[type="email"], #sign-up input[type="password"]').val('')
   setTimeout(() => { $('#message').fadeOut() }, 2000)
 }
@@ -66,7 +65,11 @@ const signOutSuccess = () => {
   $('#success-message').append('<p>Signed out successfully!</p>')
   setTimeout(function () { $('#success-message').fadeOut() }, 2000)
   store.user = null
-  $('.user-info').fadeOut()
+  menuToggle()
+  $('#message').html('')
+  $('.overlay').fadeIn()
+  $('.panel-sign-in-out').fadeIn()
+  $('.new-game').fadeOut()
 }
 
 const signOutFailure = () => {
@@ -78,10 +81,7 @@ const signOutFailure = () => {
 
 const showGamesSuccess = (data) => {
   console.log(data)
-  $('#message').fadeIn()
-  $('#message').text('You\'ve played ' + data.games.length + ' Games!')
-  $('#message').addClass('success')
-  $('#message').removeClass('failure')
+  $('.show-stats').text('You\'ve played ' + data.games.length + ' Games!')
 }
 
 const showGamesFailure = () => {
