@@ -14,6 +14,8 @@
 </head>
 
 <body>
+  <section id="error-message"></section>
+  <section id="success-message"></section>
   <div class="container">
     <h1>Tic-Tac-Toe</h1>
     <div class="panel panel-default ">
@@ -91,28 +93,52 @@
         </div>
       </section>
     </div>
+    <aside class="user-info">
+      <section id="closer">
+        <div></div>
+        <div></div>
+      </section>
+      <ul class="nav nav-tabs" id="account-info-tabs">
+        <li class="nav-item active">
+          <a class="nav-link active" href="#change-pass-tab">Change Password</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sign-out-tab">Sign Out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#user-history-tab">User History</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="nav-tabContent">
 
-
-
-    <form id="change-password">
-      <div class="form-group">
-        <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+        <div role="tabpanel" class="tab-pane active" id="change-pass-tab">
+          <h3>Change Password</h3>
+          <form id="change-password">
+            <div class="form-group">
+              <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Change Password" class="btn btn-default">
+            </div>
+          </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="sign-out-tab">
+          <h3>Sign Out</h3>
+          <form id="sign-out">
+            <input type="submit" value="Sign Out" class="btn btn-default">
+          </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="user-history-tab">
+          <h3>Show Past Games</h3>
+          <form id="show-games">
+            <input type="submit" value="Show My Past Games" class="btn btn-default">
+          </form>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Change Password" class="btn btn-default">
-      </div>
-    </form>
-
-    <form id="sign-out">
-      <input type="submit" value="Sign Out" class="btn btn-default">
-    </form>
-
-    <form id="show-games">
-      <input type="submit" value="Show My Past Games" class="btn btn-default">
-    </form>
+    </aside>
     <section id="message"></section>
   </div>
 </body>

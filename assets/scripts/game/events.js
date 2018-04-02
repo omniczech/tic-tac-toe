@@ -1,12 +1,18 @@
 
 const api = require('./api')
 const ui = require('./ui')
+const authUi = require('../auth/ui')
 const store = require('../store')
 
 // let turnOrder = 1 DEPRECATED
 // const gameBoardArray = ['', '', '', '', '', '', '', '', ''] REMOVED WHEN API WAS WORKING
 
 $('#overlay-sign-tabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+$('#account-info-tabs a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
@@ -106,6 +112,10 @@ const addLetter = (e) => {
 
 const invalidMove = () => {
   console.log('You tried to make an invalid move!')
+  $('#error-message').html('')
+  $('#error-message').fadeIn()
+  $('#error-message').append('<p>That space is already taken!</p>')
+  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
 }
 
 const newGame = () => {
@@ -126,6 +136,7 @@ const newGame = () => {
 const addHandlers = () => {
   // $('.game-space.open').on('click', addLetter)
   $('.new-game').on('click', newGame)
+  $('#closer').on('click', authUi.menuToggle)
 }
 
 module.exports = {

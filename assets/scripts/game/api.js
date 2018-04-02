@@ -1,7 +1,7 @@
 const config = require('../config')
 const store = require('../store')
 
-const newGameAPI = (data) => {
+const newGameAPI = () => {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
