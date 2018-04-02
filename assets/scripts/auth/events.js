@@ -36,11 +36,19 @@ const onSignOut = (e) => {
     .catch(ui.signOutFailure)
 }
 
+const onShowGames = (e) => {
+  e.preventDefault()
+  api.showGames()
+    .then(ui.showGamesSuccess)
+    .catch(ui.showGamesFailure)
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignin)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('#show-games').on('submit', onShowGames)
 }
 
 module.exports = {

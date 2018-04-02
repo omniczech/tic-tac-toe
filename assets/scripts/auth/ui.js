@@ -72,6 +72,22 @@ const signOutFailure = () => {
   setTimeout(() => { $('#message').fadeOut() }, 2000)
 }
 
+const showGamesSuccess = (data) => {
+  console.log(data)
+  $('#message').fadeIn()
+  $('#message').text('You\'ve played ' + data.games.length + ' Games!')
+  $('#message').addClass('success')
+  $('#message').removeClass('failure')
+}
+
+const showGamesFailure = () => {
+  $('#message').fadeIn()
+  $('#message').text('Showing Games Failed!')
+  $('#message').addClass('failure')
+  $('#message').removeClass('success')
+  setTimeout(() => { $('#message').fadeOut() }, 2000)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -80,5 +96,7 @@ module.exports = {
   changePasswordFailure,
   changePasswordSuccess,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  showGamesFailure,
+  showGamesSuccess
 }
