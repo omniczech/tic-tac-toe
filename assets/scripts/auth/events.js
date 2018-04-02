@@ -5,7 +5,7 @@ const api = require('./api')
 const onSignUp = (e) => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  console.log(data)
+  // console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -14,7 +14,7 @@ const onSignUp = (e) => {
 const onSignin = (e) => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  console.log(data)
+  // console.log(data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -23,7 +23,7 @@ const onSignin = (e) => {
 const onChangePassword = (e) => {
   e.preventDefault()
   const data = getFormFields(e.target)
-  console.log(data)
+  // console.log(data)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)

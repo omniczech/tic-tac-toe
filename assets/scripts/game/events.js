@@ -36,14 +36,15 @@ const winCons = (currentLetter, numberOfMoves) => {
 
   ) {
     $('.game-space').off('click', addLetter)
-    console.log(`${currentLetter.toUpperCase()} Wins!`)
+    $('.game-space').off('click', invalidMove)
+    // console.log(`${currentLetter.toUpperCase()} Wins!`)
     const outcome = `${currentLetter.toUpperCase()} Wins!`
     showOutcome(outcome)
     return true
   } else if (numberOfMoves.length === 8) {
     const outcome = 'It\'s a draw'
     showOutcome(outcome)
-    console.log('It\'s a draw')
+    // console.log('It\'s a draw')
     return true
   }
 }
@@ -51,7 +52,7 @@ const winCons = (currentLetter, numberOfMoves) => {
 const addLetter = (e) => {
   const arrayPos = $(e.target).attr('data-array-order')
   const numberOfMoves = store.game.cells.filter(space => space.length > 0)
-  console.log(numberOfMoves)
+  // console.log(numberOfMoves)
   let currentLetter
   let gameOver = false
   if (numberOfMoves.length % 2 === 0) {
@@ -96,7 +97,7 @@ const addLetter = (e) => {
   // }
   // $(e.target).removeClass('open')
   // console.log(gameBoardArray)
-  console.log(store.game.cells)
+  // console.log(store.game.cells)
   // turnOrder++
   // const newMove = {
   //   'gameID': store.game.id,
@@ -105,13 +106,14 @@ const addLetter = (e) => {
   //   'gameOver': gameOver
   // }
   const newMove = {'game': {'cell': {'index': arrayPos, 'value': currentLetter}, 'over': gameOver}}
-  console.log(newMove)
+  // console.log(newMove)
   api.updateGameAPI(newMove)
   $(e.target).on('click', invalidMove)
+  $('.game-space').off('click', invalidMove)
 }
 
 const invalidMove = () => {
-  console.log('You tried to make an invalid move!')
+  // console.log('You tried to make an invalid move!')
   $('#error-message').html('')
   $('#error-message').fadeIn()
   $('#error-message').append('<p>That space is already taken!</p>')
@@ -121,7 +123,7 @@ const invalidMove = () => {
 const newGame = () => {
   api.newGameAPI()
     .then(ui.newGameSuccess)
-    .catch(console.log('error'))
+    .catch()
   $('.game-space').html('')
   // turnOrder = 1
   // gameBoardArray.forEach(function (part, index, theArray) {

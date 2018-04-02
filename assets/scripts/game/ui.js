@@ -6,7 +6,7 @@ const newGameSuccess = (data) => {
   $('#success-message').append('<p>New game started!</p>')
   setTimeout(function () { $('#success-message').fadeOut() }, 2000)
   store.game = data.game
-  console.log(data)
+  // console.log(data)
 }
 module.exports = {
   newGameSuccess

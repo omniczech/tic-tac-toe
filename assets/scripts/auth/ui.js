@@ -26,7 +26,7 @@ const signInSuccess = (data) => {
   $('#success-message').append('<p>Signed in successfully!</p>')
   setTimeout(function () { $('#success-message').fadeOut() }, 2000)
   store.user = data.user
-  console.log(store.user)
+  // console.log(store.user)
   $('#sign-in input[type="email"], #sign-in input[type="password"]').val('')
   $('.panel-sign-in-out').fadeOut()
   $('.new-game').fadeIn()
@@ -80,7 +80,7 @@ const signOutFailure = () => {
 }
 
 const showGamesSuccess = (data) => {
-  console.log(data)
+  // console.log(data)
   $('.show-stats').text('You\'ve played ' + data.games.length + ' Games!')
 }
 
