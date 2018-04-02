@@ -11,7 +11,6 @@ const signUpSuccess = () => {
   $('#success-message').fadeIn()
   $('#success-message').append('<p>Signed up successfully!<br>Please sign in now.</p>')
   $('#sign-up input[type="email"], #sign-up input[type="password"]').val('')
-  setTimeout(() => { $('#message').fadeOut() }, 2000)
 }
 
 const signUpFailure = () => {
