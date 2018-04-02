@@ -28,6 +28,8 @@ const signInSuccess = (data) => {
   console.log(store.user)
   $('#sign-in input[type="email"], #sign-in input[type="password"]').val('')
   setTimeout(() => { $('#message').fadeOut() }, 2000)
+  $('.panel-sign-in-out').fadeOut()
+  $('.new-game').fadeIn()
 }
 
 const signInFailure = () => {

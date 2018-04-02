@@ -1,3 +1,10 @@
+@mixin absolute-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 h1 {
   text-align: center;
 }
@@ -9,18 +16,73 @@ h1 {
   div {
     box-sizing: border-box;
 
-    div{
+    div {
       border: 1px solid black;
       padding-top: 33%;
       position: relative;
 
       * {
-        left: 50%;
+        @include absolute-center;
         margin: 0;
-        position: absolute;
-        top: 50%;
-        transform: translateX(-50%) translateY(-50%);
       }
     }
+  }
+}
+
+.container > .panel {
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,.5);
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 20;
+
+  .panel {
+    @include absolute-center;
+    margin: 0;
+    padding: 20px;
+    width: 90%;
+  }
+}
+
+.tab-pane {
+  form {
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 0;
+    padding: 10px;
+  }
+}
+
+.new-game {
+  background: rgba(255,255,255, 0.4);
+  border: 2px solid white;
+  border-radius: 10px;
+  color: #fff;
+  display: none;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.first-game {
+  @include absolute-center;
+}
+
+.results {
+  @include absolute-center;
+  display: none;
+
+  h2 {
+    color: #fff;
+    font-size: 72px;
+    font-weight: bold;
   }
 }

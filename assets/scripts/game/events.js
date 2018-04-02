@@ -6,6 +6,17 @@ const store = require('../store')
 // let turnOrder = 1 DEPRECATED
 // const gameBoardArray = ['', '', '', '', '', '', '', '', ''] REMOVED WHEN API WAS WORKING
 
+$('#overlay-sign-tabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+const showOutcome = (winner) => {
+  $('.overlay').fadeIn()
+  $('.results').fadeIn()
+  $('.results h2').text(winner)
+}
+
 const winCons = (currentLetter, numberOfMoves) => {
   if (
     (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) ||
@@ -20,8 +31,12 @@ const winCons = (currentLetter, numberOfMoves) => {
   ) {
     $('.game-space').off('click', addLetter)
     console.log(`${currentLetter.toUpperCase()} Wins!`)
+    const outcome = `${currentLetter.toUpperCase()} Wins!`
+    showOutcome(outcome)
     return true
   } else if (numberOfMoves.length === 8) {
+    const outcome = 'It\'s a draw'
+    showOutcome(outcome)
     console.log('It\'s a draw')
     return true
   }
@@ -104,6 +119,8 @@ const newGame = () => {
   // })
   // console.log(gameBoardArray)
   $('.game-space.open').on('click', addLetter)
+  $('.overlay').fadeOut()
+  $('.first-game').fadeOut()
 }
 
 const addHandlers = () => {

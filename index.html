@@ -16,7 +16,65 @@
 <body>
   <div class="container">
     <h1>Tic-Tac-Toe</h1>
-    <div class="panel panel-default">
+    <div class="panel panel-default ">
+      <section class="overlay">
+
+        <div class="panel panel-default panel-sign-in-out">
+
+          <ul class="nav nav-tabs" id="overlay-sign-tabs">
+            <li class="nav-item active">
+              <a class="nav-link active" href="#sign-up-tab">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sign-in-tab">Sign In</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="nav-tabContent">
+
+            <div role="tabpanel" class="tab-pane active" id="sign-up-tab">
+              <form id="sign-up">
+                <div class="form-group">
+                  <input type="email" name="credentials[email]" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Sign Up" class="btn btn-default">
+                </div>
+              </form>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="sign-in-tab">
+              <form id="sign-in">
+                <div class="form-group">
+                  <input type="email" name="credentials[email]" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
+                </div>
+                <div class="form form-group">
+                  <input type="submit" value="Sign In" class="btn btn-default">
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <section class="first-game">
+          <button class="new-game">New Game</button>
+        </section>
+
+        <section class="results">
+          <h2 class="announce"></h2>
+          <button class="new-game">New Game</button>
+        </section>
+
+      </section>
       <section id="game-board">
         <div class="row">
           <div class="col-xs-4 game-space open" data-array-order="0"></div>
@@ -33,34 +91,8 @@
         </div>
       </section>
     </div>
-    <button class="new-game btn btn-default">New Game</button>
 
-    <form id="sign-up">
-      <div class="form-group">
-        <input type="email" name="credentials[email]" placeholder="Email" class="form-control">
-      </div>
-      <div class="form-group">
-        <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
-      </div>
-      <div class="form-group">
-        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" class="form-control">
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Sign Up" class="btn btn-default">
-      </div>
-    </form>
 
-    <form id="sign-in">
-      <div class="form-group">
-        <input type="email" name="credentials[email]" placeholder="Email" class="form-control">
-      </div>
-      <div class="form-group">
-        <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
-      </div>
-      <div class="form form-group">
-        <input type="submit" value="Sign In" class="btn btn-default">
-      </div>
-    </form>
 
     <form id="change-password">
       <div class="form-group">
