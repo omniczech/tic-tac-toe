@@ -63,7 +63,6 @@ const addLetter = (e) => {
   store.game.cells[arrayPos] = currentLetter
   $(e.target).append(`<h1>${currentLetter}</h1>`)
   $(e.target).off('click', addLetter)
-  $(e.target).on('click', invalidMove)
   // if (
   //   (gameBoardArray[0] !== '' && gameBoardArray[0] === gameBoardArray[1] && gameBoardArray[1] === gameBoardArray[2]) ||
   //   (gameBoardArray[3] !== '' && gameBoardArray[3] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[5]) ||
@@ -108,6 +107,7 @@ const addLetter = (e) => {
   const newMove = {'game': {'cell': {'index': arrayPos, 'value': currentLetter}, 'over': gameOver}}
   console.log(newMove)
   api.updateGameAPI(newMove)
+  $(e.target).on('click', invalidMove)
 }
 
 const invalidMove = () => {
