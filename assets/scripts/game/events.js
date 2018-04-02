@@ -109,7 +109,6 @@ const addLetter = (e) => {
   // console.log(newMove)
   api.updateGameAPI(newMove)
   $(e.target).on('click', invalidMove)
-  $('.game-space').off('click', invalidMove)
 }
 
 const invalidMove = () => {
