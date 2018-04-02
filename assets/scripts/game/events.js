@@ -3,14 +3,37 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
-let turnOrder = 1
-// const gameBoardArray = ['', '', '', '', '', '', '', '', '']
+// let turnOrder = 1 DEPRECATED
+// const gameBoardArray = ['', '', '', '', '', '', '', '', ''] REMOVED WHEN API WAS WORKING
+
+const winCons = (currentLetter, numberOfMoves) => {
+  if (
+    (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) ||
+    (store.game.cells[3] !== '' && store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5]) ||
+    (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8]) ||
+    (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6]) ||
+    (store.game.cells[1] !== '' && store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7]) ||
+    (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8]) ||
+    (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8]) ||
+    (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[4] && store.game.cells[4] === store.game.cells[2])
+
+  ) {
+    $('.game-space').off('click', addLetter)
+    console.log(`${currentLetter.toUpperCase()} Wins!`)
+    return true
+  } else if (numberOfMoves.length === 8) {
+    console.log('It\'s a draw')
+    return true
+  }
+}
 
 const addLetter = (e) => {
   const arrayPos = $(e.target).attr('data-array-order')
+  const numberOfMoves = store.game.cells.filter(space => space.length > 0)
+  console.log(numberOfMoves)
   let currentLetter
   let gameOver = false
-  if (turnOrder % 2 === 1) {
+  if (numberOfMoves.length % 2 === 0) {
     currentLetter = 'x'
   } else {
     currentLetter = 'o'
@@ -30,28 +53,30 @@ const addLetter = (e) => {
   //   (gameBoardArray[6] !== '' && gameBoardArray[6] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[2])
   //
   // )
-  if (
-    (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) ||
-    (store.game.cells[3] !== '' && store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5]) ||
-    (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8]) ||
-    (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6]) ||
-    (store.game.cells[1] !== '' && store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7]) ||
-    (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8]) ||
-    (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8]) ||
-    (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[4] && store.game.cells[4] === store.game.cells[2])
-
-  ) {
-    $('.game-space').off('click', addLetter)
-    console.log(`${currentLetter.toUpperCase()} Wins!`)
-    gameOver = true
-  } else if (turnOrder === 9) {
-    console.log('It\'s a draw')
-    gameOver = true
-  }
+  // Check for all possible winning conditions
+  gameOver = winCons(currentLetter, numberOfMoves)
+  // if (
+  //   (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) ||
+  //   (store.game.cells[3] !== '' && store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5]) ||
+  //   (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8]) ||
+  //   (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6]) ||
+  //   (store.game.cells[1] !== '' && store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7]) ||
+  //   (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8]) ||
+  //   (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8]) ||
+  //   (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[4] && store.game.cells[4] === store.game.cells[2])
+  //
+  // ) {
+  //   $('.game-space').off('click', addLetter)
+  //   console.log(`${currentLetter.toUpperCase()} Wins!`)
+  //   gameOver = true
+  // } else if (numberOfMoves.length === 8) {
+  //   console.log('It\'s a draw')
+  //   gameOver = true
+  // }
   // $(e.target).removeClass('open')
   // console.log(gameBoardArray)
   console.log(store.game.cells)
-  turnOrder++
+  // turnOrder++
   // const newMove = {
   //   'gameID': store.game.id,
   //   'cellIndex': arrayPos,
@@ -60,7 +85,6 @@ const addLetter = (e) => {
   // }
   const newMove = {'game': {'cell': {'index': arrayPos, 'value': currentLetter}, 'over': gameOver}}
   console.log(newMove)
-  console.log(typeof newMove)
   api.updateGameAPI(newMove)
 }
 
@@ -69,7 +93,7 @@ const newGame = () => {
     .then(ui.newGameSuccess)
     .catch(console.log('error'))
   $('.game-space').html('')
-  turnOrder = 1
+  // turnOrder = 1
   // gameBoardArray.forEach(function (part, index, theArray) {
   //   theArray[index] = ''
   // })

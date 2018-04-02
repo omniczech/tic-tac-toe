@@ -1,5 +1,10 @@
+h1 {
+  text-align: center;
+}
+
 #game-board {
-  max-width: 720px;
+  margin: 10px auto;
+  max-width: 90%;
 
   div {
     box-sizing: border-box;
@@ -11,10 +16,10 @@
 
       * {
         left: 50%;
+        margin: 0;
         position: absolute;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
-        margin: 0;
       }
     }
   }
