@@ -88,7 +88,7 @@ const showGamesSuccess = (data) => {
   const sorted = data.games.sort(function (a, b) {
     return a.id - b.id
   })
-  console.log(sorted)
+  // console.log(sorted)
   sorted.forEach((game) => {
     const winner = winConsOld(game)
     // console.log(game.id)
@@ -110,7 +110,7 @@ const winConsOld = (loopvar) => {
 
   ) {
     // const outcome = `${currentLetter.toUpperCase()} Wins!`
-    console.log('X won!')
+    // console.log('X won!')
     return 'X'
   } else if (
     (loopvar.cells[0] === 'o' && loopvar.cells[0] === loopvar.cells[1] && loopvar.cells[1] === loopvar.cells[2]) ||
@@ -124,11 +124,11 @@ const winConsOld = (loopvar) => {
 
   ) {
     // const outcome = `${currentLetter.toUpperCase()} Wins!`
-    console.log('O won!')
+    // console.log('O won!')
     return 'O'
   } else if (loopvar.cells.length === 9 && loopvar.over) {
     // const outcome = 'It\'s a draw'
-    console.log('Noone won!')
+    // console.log('Noone won!')
     return 'No One (Draw)'
   } else {
     return 'No One (Unfinished)'
