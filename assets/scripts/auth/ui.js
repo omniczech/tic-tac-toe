@@ -32,7 +32,7 @@ const signInSuccess = (data) => {
   $('.new-game').fadeIn()
   $('.user-info').fadeIn()
   $('#message').append('<p>You\'re logged in as ' + store.user.email + '</p>')
-  $('#message').append('<button class="show-options">Show options/User details</button>')
+  $('#message').append('<button class="show-options">Options</button>')
   $('.show-options').on('click', menuToggle)
   // surface the menu
 }

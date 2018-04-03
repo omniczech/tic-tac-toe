@@ -4,36 +4,64 @@
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
+
 @mixin shadow {
   box-shadow: 1px 1px 2px #aaa;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 $black: #000;
 $white: #fff;
+$color1: #1d2224;
+$color2: #538896;
+$color3: rgba(41, 67, 74, .7);
+$color4: #f0f7ff; // $color5:;
 
+body {
+  background-color: $color4;
+}
+
+* {
+  box-sizing: border-box;
+
+}
 h1 {
+  font-family: 'Oswald';
   text-align: center;
 }
 
 #main-region {
-    position: relative;
+  position: relative;
+
+  button,
+  h2 {
+    font-family: 'Oswald';
+    text-align: center;
+  }
 }
 
 #game-board {
-  margin: 10px auto;
-  max-width: 90%;
 
-  div {
+  & > div {
+    border: 5px solid $color1;
+    border-radius: 10px;
     box-sizing: border-box;
+    margin: 0;
+    width: 100%;
 
     div {
-      border: 1px solid $black;
+      background: $color2;
+      border: 5px solid $color1;
       padding-top: 33%;
       position: relative;
+    }
 
-      * {
-        @include absolute-center;
-        margin: 0;
-      }
+    h1 {
+      @include absolute-center;
+      color: $white;
+      font-size: 140px;
+      margin: 0;
+      text-transform: uppercase;
     }
   }
 }
@@ -43,7 +71,7 @@ h1 {
 }
 
 .overlay {
-  background: rgba(0, 0, 0, .5);
+  background: $color3;
   bottom: 0;
   display: block;
   left: 0;
@@ -69,7 +97,7 @@ h1 {
 }
 
 .new-game {
-  background: rgba(255,255,255, 0.4);
+  background: rgba(255, 255, 255, 0.4);
   border: 2px solid $white;
   border-radius: 10px;
   color: $white;
@@ -86,6 +114,7 @@ h1 {
 .results {
   @include absolute-center;
   display: none;
+  text-align: center;
 
   h2 {
     color: $white;
@@ -94,10 +123,15 @@ h1 {
   }
 }
 
+#message {
+  padding: 20px;
+  text-align: center;
+}
+
 #error-message {
   @include shadow;
   background: #f99;
-  border: 1px solid#f00;
+  border: 1px solid #f00;
   border-radius: 5px;
   display: none;
   left: 10%;
@@ -133,28 +167,41 @@ h1 {
 }
 
 .user-info {
+  background: rgba(0, 0, 0, .5);
   display: none;
+  height: 100vh;
+  left: 0;
+  padding: 20px;
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #eee;
-  z-index: 24;
   transform: translateX(-100%);
   transition: 0.5s;
-  padding: 20px;
+  width: 100vw;
+  z-index: 24;
 
   &.shown {
     transform: translateX(0);
   }
+
+  #account-info-tabs {
+    margin-top: 50px;
+  }
+
+  .sidebar {
+    background: #eee;
+    height: 100%;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: 35%;
+  }
 }
 
 #closer {
-  float: right;
+  cursor: pointer;
   margin-top: 10px;
   width: 30px;
-  cursor: pointer;
 
   div {
     background: $black;
