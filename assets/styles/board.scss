@@ -195,7 +195,16 @@ h1 {
     padding: 20px;
     position: absolute;
     top: 0;
-    width: 35%;
+
+    #nav-tabContent {
+      max-height: 75%;
+      // overflow: scroll;
+    }
+    .show-stats {
+      margin-top: 20px;
+      max-height: 57.2vh;
+      overflow: scroll;
+    }
   }
 }
 
@@ -223,5 +232,17 @@ h1 {
 aside {
   .tab-pane {
     background: $white;
+  }
+}
+
+@media (max-width: 767px) {
+
+  #game-board > div h1 {
+    font-size: 25vw;
+  }
+
+  #main-region button,
+  #main-region h2 {
+    font-size: 8vw;
   }
 }
