@@ -1,0 +1,132 @@
+<section id="error-message"></section>
+<section id="success-message"></section>
+<div class="container">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h1>Tic-Tac-Toe</h1>
+    <div class="" id="main-region">
+      <section class="overlay">
+
+        <div class="panel panel-default panel-sign-in-out">
+
+          <ul class="nav nav-tabs" id="overlay-sign-tabs">
+            <li class="nav-item active">
+              <a class="nav-link active" href="#sign-up-tab">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sign-in-tab">Sign In</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="nav-tabContent">
+
+            <div role="tabpanel" class="tab-pane active" id="sign-up-tab">
+              <form id="sign-up">
+                <div class="form-group">
+                  <input type="email" name="credentials[email]" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Sign Up" class="btn btn-default">
+                </div>
+              </form>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="sign-in-tab">
+              <form id="sign-in">
+                <div class="form-group">
+                  <input type="email" name="credentials[email]" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
+                </div>
+                <div class="form form-group">
+                  <input type="submit" value="Sign In" class="btn btn-default">
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <section class="first-game">
+          <button class="new-game">New Game</button>
+        </section>
+
+        <section class="results">
+          <h2 class="announce"></h2>
+          <button class="new-game">New Game</button>
+        </section>
+
+      </section>
+      <section id="game-board">
+        <div class="row">
+          <div class="col-xs-4 game-space open" data-array-order="0"></div>
+          <div class="col-xs-4 game-space open" data-array-order="1"></div>
+          <div class="col-xs-4 game-space open" data-array-order="2"></div>
+
+          <div class="col-xs-4 game-space open" data-array-order="3"></div>
+          <div class="col-xs-4 game-space open" data-array-order="4"></div>
+          <div class="col-xs-4 game-space open" data-array-order="5"></div>
+
+          <div class="col-xs-4 game-space open" data-array-order="6"></div>
+          <div class="col-xs-4 game-space open" data-array-order="7"></div>
+          <div class="col-xs-4 game-space open" data-array-order="8"></div>
+        </div>
+      </section>
+    </div>
+    <aside class="user-info">
+      <section class="sidebar"><section id="closer">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </section>
+        <ul class="nav nav-tabs" id="account-info-tabs">
+          <li class="nav-item active">
+            <a class="nav-link active" href="#change-pass-tab">Change Password</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#sign-out-tab">Sign Out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#user-history-tab">User History</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="nav-tabContent">
+
+          <div role="tabpanel" class="tab-pane active" id="change-pass-tab">
+            <h3>Change Password</h3>
+            <form id="change-password">
+              <div class="form-group">
+                <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Change Password" class="btn btn-default">
+              </div>
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="sign-out-tab">
+            <h3>Sign Out</h3>
+            <form id="sign-out">
+              <input type="submit" value="Sign Out" class="btn btn-default">
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="user-history-tab">
+            <h3>Show Past Games</h3>
+            <form id="show-games">
+              <input type="submit" value="Show My Past Games" class="btn btn-default">
+            </form>
+            <section class="show-stats"></section>
+          </div>
+        </div></section>
+    </aside>
+    <section id="message"></section>
+  </div>
+  <div class="col-md-3"></div>
+</div>

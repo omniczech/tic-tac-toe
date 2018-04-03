@@ -12,4 +12,5 @@ const authEvents = require('./auth/events')
 $(() => {
   gameEvents.addHandlers()
   authEvents.addHandlers()
+  $('body').load('./layout.html')
 })
