@@ -68,7 +68,6 @@ const addLetter = (e) => {
   } else {
     currentLetter = 'o'
   }
-  // gameBoardArray[arrayPos] = currentLetter
   if (store.game.cells[arrayPos].length === 0) {
     store.game.cells[arrayPos] = currentLetter
     $(e.target).append(`<h1>${currentLetter}</h1>`)
@@ -86,7 +85,6 @@ const addLetter = (e) => {
 }
 
 const invalidMove = () => {
-  // console.log('You tried to make an invalid move!')
   $('#error-message').html('')
   $('#error-message').fadeIn()
   $('#error-message').append('<p>That space is already taken!</p>')
@@ -94,25 +92,19 @@ const invalidMove = () => {
 }
 
 const newGame = () => {
+  // make call to API for new Game Object
   api.newGameAPI()
     .then(ui.newGameSuccess)
-    .catch()
+    .catch(ui.newGameFailure)
   $('.game-space').html('')
-  // turnOrder = 1
-  // gameBoardArray.forEach(function (part, index, theArray) {
-  //   theArray[index] = ''
-  // })
-  // console.log(gameBoardArray)
   $('.game-space.open').on('click', addLetter)
   $('.overlay').fadeOut()
   $('.first-game').fadeOut()
 }
 
 const addHandlers = () => {
-  // $('.game-space.open').on('click', addLetter)
   $('.new-game').on('click', newGame)
   $('#closer').on('click', authUi.menuToggle)
-  console.log('gameevents loaded')
   addTabHandlers()
 }
 

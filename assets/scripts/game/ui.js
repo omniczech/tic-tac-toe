@@ -8,6 +8,13 @@ const newGameSuccess = (data) => {
   store.game = data.game
   // console.log(data)
 }
+const newGameFailure = (data) => {
+  $('#error-message').html('')
+  $('#error-message').fadeIn()
+  $('#error-message').append('<p>Failed to create new game, please try again!</p>')
+  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+}
 module.exports = {
-  newGameSuccess
+  newGameSuccess,
+  newGameFailure
 }

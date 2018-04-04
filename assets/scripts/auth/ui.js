@@ -65,6 +65,7 @@ const signOutSuccess = () => {
   $('#success-message').append('<p>Signed out successfully!</p>')
   setTimeout(function () { $('#success-message').fadeOut() }, 2000)
   store.user = null
+  store.game = null
   menuToggle()
   $('#message').html('')
   $('.show-stats').html('')
@@ -74,6 +75,7 @@ const signOutSuccess = () => {
   $('.announce').fadeOut()
   $('input[type="email"], input[type="password"]').val('')
   $('.game-space').off('click')
+  $('.game-space').html('')
 }
 
 const signOutFailure = () => {
