@@ -37,13 +37,13 @@ const winCons = (currentLetter, numberOfMoves) => {
     (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[4] && store.game.cells[4] === store.game.cells[2])
 
   ) {
-    $('.game-space').off('click', addLetter)
-    $('.game-space').off('click', invalidMove)
+    $('.game-space').off('click')
     // console.log(`${currentLetter.toUpperCase()} Wins!`)
     const outcome = `${currentLetter.toUpperCase()} Wins!`
     showOutcome(outcome)
     return true
   } else if (numberOfMoves.length === 8) {
+    $('.game-space').off('click')
     const outcome = 'It\'s a draw'
     showOutcome(outcome)
     // console.log('It\'s a draw')

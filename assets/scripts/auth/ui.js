@@ -73,6 +73,7 @@ const signOutSuccess = () => {
   $('.new-game').fadeOut()
   $('.announce').fadeOut()
   $('input[type="email"], input[type="password"]').val('')
+  $('.game-space').off('click')
 }
 
 const signOutFailure = () => {
@@ -84,6 +85,7 @@ const signOutFailure = () => {
 
 const showGamesSuccess = (data) => {
   // console.log(data)
+  $('.show-stats').html('')
   $('.show-stats').append('<p>You\'ve played ' + data.games.length + ' Games!</p><hr>')
   const sorted = data.games.sort(function (a, b) {
     return a.id - b.id
