@@ -110,7 +110,7 @@ const addLetter = (e) => {
   const newMove = {'game': {'cell': {'index': arrayPos, 'value': currentLetter}, 'over': gameOver}}
   // console.log(newMove)
   api.updateGameAPI(newMove)
-  $(e.target).on('click', invalidMove)
+  setTimeout(() => {$(e.target).on('click', invalidMove) }, 1000)
 }
 
 const invalidMove = () => {
