@@ -5,29 +5,39 @@ const store = require('../store')
 const menuToggle = () => {
   $('.user-info').toggleClass('shown')
 }
+// Display successful call
+const successDisplay = (message) => {
+  $('#success-message').html('')
+  $('#success-message').fadeIn()
+  $('#success-message').append(`<p>${message}</p>`)
+  $('input[type="email"], input[type="password"]').val('')
+  setTimeout(function () { $('#success-message').fadeOut() }, 2000)
+}
+// Display unsuccessful call
+const failureDisplay = (message) => {
+  $('#error-message').html('')
+  $('#error-message').fadeIn()
+  $('#error-message').append(`<p>${message}</p>`)
+  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+}
 
 const signUpSuccess = () => {
+  // successDisplay('Signed up successfully!<br>Please sign in now.')
   $('#success-message').html('')
   $('#success-message').fadeIn()
   $('#success-message').append('<p>Signed up successfully!<br>Please sign in now.</p>')
   $('input[type="email"], input[type="password"]').val('')
+  setTimeout(function () { $('#success-message').fadeOut() }, 2000)
 }
 
 const signUpFailure = () => {
-  $('#error-message').html('')
-  $('#error-message').fadeIn()
-  $('#error-message').append('<p>Something went wrong.<br>Make sure your password and password confirmation are the same.</p>')
-  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+  failureDisplay('Something went wrong.<br>Make sure your password and password confirmation are the same.')
 }
 
 const signInSuccess = (data) => {
-  $('#success-message').html('')
-  $('#success-message').fadeIn()
-  $('#success-message').append('<p>Signed in successfully!</p>')
-  setTimeout(function () { $('#success-message').fadeOut() }, 2000)
+  successDisplay('Signed in successfully!')
   store.user = data.user
   // console.log(store.user)
-  $('input[type="email"], input[type="password"]').val('')
   $('.panel-sign-in-out').fadeOut()
   $('.new-game').fadeIn()
   $('.user-info').fadeIn()
@@ -38,32 +48,19 @@ const signInSuccess = (data) => {
 }
 
 const signInFailure = () => {
-  $('#error-message').html('')
-  $('#error-message').fadeIn()
-  $('#error-message').append('<p>Something went wrong.<br>Try entering your email and password again.</p>')
-  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+  failureDisplay('Something went wrong.<br>Try entering your email and password again.')
 }
 
 const changePasswordSuccess = (data) => {
-  $('#success-message').html('')
-  $('#success-message').fadeIn()
-  $('#success-message').append('<p>Password changed successfully!</p>')
-  setTimeout(function () { $('#success-message').fadeOut() }, 2000)
-  $('input[type="email"], input[type="password"]').val('')
+  successDisplay('Password changed successfully!')
 }
 
 const changePasswordFailure = (data) => {
-  $('#error-message').html('')
-  $('#error-message').fadeIn()
-  $('#error-message').append('<p>Something went wrong.</p>')
-  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+  failureDisplay('Something went wrong.')
 }
 
 const signOutSuccess = () => {
-  $('#success-message').html('')
-  $('#success-message').fadeIn()
-  $('#success-message').append('<p>Signed out successfully!</p>')
-  setTimeout(function () { $('#success-message').fadeOut() }, 2000)
+  successDisplay('Signed out successfully!')
   store.user = null
   store.game = null
   menuToggle()
@@ -79,10 +76,7 @@ const signOutSuccess = () => {
 }
 
 const signOutFailure = () => {
-  $('#error-message').html('')
-  $('#error-message').fadeIn()
-  $('#error-message').append('<p>Something went wrong.</p>')
-  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+  failureDisplay('Something went wrong.')
 }
 
 const showGamesSuccess = (data) => {

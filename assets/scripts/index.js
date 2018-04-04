@@ -15,5 +15,5 @@ const allHandlers = () => {
 
 $(() => {
   $('body').load('public/layout.html', allHandlers)
-  console.log('ver. 1.0')
+  // console.log('ver. 1.0')
 })

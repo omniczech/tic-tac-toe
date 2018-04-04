@@ -4,9 +4,6 @@ const ui = require('./ui')
 const authUi = require('../auth/ui')
 const store = require('../store')
 
-// let turnOrder = 1 DEPRECATED
-// const gameBoardArray = ['', '', '', '', '', '', '', '', ''] REMOVED WHEN API WAS WORKING
-
 const addTabHandlers = () => {
   $('#overlay-sign-tabs a').on('click', function (e) {
     e.preventDefault()
@@ -78,10 +75,6 @@ const addLetter = (e) => {
   } else {
     invalidMove()
   }
-  // $(e.target).off('click', addLetter)
-
-  // console.log(store.game.cells)
-  // setTimeout(() => { $(e.target).on('click', invalidMove) }, 1000)
 }
 
 const invalidMove = () => {
