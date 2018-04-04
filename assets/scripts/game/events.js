@@ -7,15 +7,17 @@ const store = require('../store')
 // let turnOrder = 1 DEPRECATED
 // const gameBoardArray = ['', '', '', '', '', '', '', '', ''] REMOVED WHEN API WAS WORKING
 
-$('#overlay-sign-tabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+const addTabHandlers = () => {
+  $('#overlay-sign-tabs a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
 
-$('#account-info-tabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+  $('#account-info-tabs a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+}
 
 const showOutcome = (winner) => {
   $('.overlay').fadeIn()
@@ -138,6 +140,8 @@ const addHandlers = () => {
   // $('.game-space.open').on('click', addLetter)
   $('.new-game').on('click', newGame)
   $('#closer').on('click', authUi.menuToggle)
+  console.log('gameevents loaded')
+  addTabHandlers()
 }
 
 module.exports = {

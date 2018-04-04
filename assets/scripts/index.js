@@ -8,9 +8,11 @@
 
 const gameEvents = require('./game/events')
 const authEvents = require('./auth/events')
-
-$(() => {
-  $('body').load('public/layout.html')
+const allHandlers = () => {
   gameEvents.addHandlers()
   authEvents.addHandlers()
+}
+
+$(() => {
+  $('body').load('public/layout.html', allHandlers)
 })
