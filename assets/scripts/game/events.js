@@ -20,6 +20,7 @@ const showOutcome = (winner) => {
   $('.overlay').fadeIn()
   $('.results').fadeIn()
   $('.results h2').text(winner)
+  $('.results h2').fadeIn()
 }
 
 const winCons = (currentLetter, numberOfMoves) => {
