@@ -8,12 +8,14 @@
 
 const gameEvents = require('./game/events')
 const authEvents = require('./auth/events')
+// bind all handlers
 const allHandlers = () => {
   gameEvents.addHandlers()
   authEvents.addHandlers()
 }
 
 $(() => {
+  // load the layout to avoid flicker.
   $('body').load('public/layout.html', allHandlers)
   // console.log('ver. 1.0')
 })

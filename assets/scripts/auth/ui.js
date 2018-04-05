@@ -3,6 +3,7 @@
 const store = require('../store')
 
 const menuToggle = () => {
+  // show or hide side menu
   $('.user-info').toggleClass('shown')
 }
 // Display successful call
@@ -22,12 +23,7 @@ const failureDisplay = (message) => {
 }
 
 const signUpSuccess = () => {
-  // successDisplay('Signed up successfully!<br>Please sign in now.')
-  $('#success-message').html('')
-  $('#success-message').fadeIn()
-  $('#success-message').append('<p>Signed up successfully!<br>Please sign in now.</p>')
-  $('input[type="email"], input[type="password"]').val('')
-  setTimeout(function () { $('#success-message').fadeOut() }, 2000)
+  successDisplay('Signed up successfully!<br>Please sign in now.')
 }
 
 const signUpFailure = () => {
@@ -61,8 +57,10 @@ const changePasswordFailure = (data) => {
 
 const signOutSuccess = () => {
   successDisplay('Signed out successfully!')
+  // clear game and user info
   store.user = null
   store.game = null
+  // reset to initial view
   menuToggle()
   $('#message').html('')
   $('.show-stats').html('')
@@ -80,13 +78,14 @@ const signOutFailure = () => {
 }
 
 const showGamesSuccess = (data) => {
-  // console.log(data)
+  // clear div
   $('.show-stats').html('')
+  // sort all games by ID ascending
   $('.show-stats').append('<p>You\'ve played ' + data.games.length + ' Games!</p><hr>')
   const sorted = data.games.sort(function (a, b) {
     return a.id - b.id
   })
-  // console.log(sorted)
+  // print all sorted games
   sorted.forEach((game) => {
     const winner = winConsOld(game)
     // console.log(game.id)
@@ -95,6 +94,7 @@ const showGamesSuccess = (data) => {
   })
 }
 
+// figure out winner of finished game.
 const winConsOld = (loopvar) => {
   if (
     (loopvar.cells[0] === 'x' && loopvar.cells[0] === loopvar.cells[1] && loopvar.cells[1] === loopvar.cells[2]) ||
@@ -134,10 +134,7 @@ const winConsOld = (loopvar) => {
 }
 
 const showGamesFailure = () => {
-  $('#error-message').html('')
-  $('#error-message').fadeIn()
-  $('#error-message').append('<p>Something went wrong.</p>')
-  setTimeout(function () { $('#error-message').fadeOut() }, 2000)
+  failureDisplay('Something went wrong.')
 }
 
 module.exports = {

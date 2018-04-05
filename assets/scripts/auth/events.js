@@ -2,6 +2,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const api = require('./api')
 
+// sign up form submitted
 const onSignUp = (e) => {
   e.preventDefault()
   const data = getFormFields(e.target)
@@ -11,6 +12,7 @@ const onSignUp = (e) => {
     .catch(ui.signUpFailure)
 }
 
+// sign in form submitted
 const onSignin = (e) => {
   e.preventDefault()
   const data = getFormFields(e.target)
@@ -20,6 +22,7 @@ const onSignin = (e) => {
     .catch(ui.signInFailure)
 }
 
+// change password submitted
 const onChangePassword = (e) => {
   e.preventDefault()
   const data = getFormFields(e.target)
@@ -29,6 +32,7 @@ const onChangePassword = (e) => {
     .catch(ui.changePasswordFailure)
 }
 
+// sign out submitted
 const onSignOut = (e) => {
   e.preventDefault()
   api.signOut()
@@ -36,6 +40,7 @@ const onSignOut = (e) => {
     .catch(ui.signOutFailure)
 }
 
+// show games submitted
 const onShowGames = (e) => {
   e.preventDefault()
   api.showGames()
