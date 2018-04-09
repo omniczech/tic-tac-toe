@@ -37,8 +37,7 @@ const signInSuccess = (data) => {
   $('.panel-sign-in-out').fadeOut()
   $('.new-game').fadeIn()
   $('.user-info').fadeIn()
-  $('#message').append('<p>You\'re logged in as ' + store.user.email + '</p>')
-  $('#message').append('<button class="show-options">Options</button>')
+  $('#message').html('<p>You\'re logged in as ' + store.user.email + '</p><button class="show-options">Options</button>')
   $('.show-options').on('click', menuToggle)
   // surface the menu
 }
